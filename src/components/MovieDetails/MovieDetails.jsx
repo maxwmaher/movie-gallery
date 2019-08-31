@@ -3,6 +3,15 @@ import { connect } from "react-redux";
 
 class MovieDetails extends Component {
 
+handleEdit = () => {
+    this.props.history.push(`/edit`);
+}
+
+
+handleBack = () => {
+    this.props.history.push(`/`);
+}
+
     render() {
 
         return (
@@ -17,8 +26,8 @@ class MovieDetails extends Component {
                         )
                     })}
                 </ul>
-                <p><button>Edit</button></p>
-                <p><button>Back to List</button></p>
+                <p><button onClick={this.handleEdit}>Edit</button></p>
+                <p><button onClick={this.handleBack}>Back to List</button></p>
                 </div>
         )
 
