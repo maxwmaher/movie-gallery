@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CenteredGrid from './index.jsx';
+import MovieItems from '../MovieItems/MovieItems'
 
 class MovieList extends Component {
 
@@ -22,7 +23,7 @@ class MovieList extends Component {
                 <ul>
                 {this.props.store.movies.map((movies) => {
                     return (
-                        <li key={movies.id}>{movies.title}</li>
+                        <MovieItems movies={movies} />
                     )
                 })}
                 </ul>
