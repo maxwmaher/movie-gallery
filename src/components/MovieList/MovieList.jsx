@@ -17,7 +17,7 @@ class MovieList extends Component {
     render() {
         return (
             <div style={{marginTop: 20, padding: 30}}>
-                <Grid container spacing={3} justify="center">
+                <Grid container spacing={4} justify="center">
                     {this.props.store.movies.map((movies) => (<MovieItems movies={movies}/>))}
                 </Grid>
             </div>

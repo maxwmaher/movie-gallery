@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import MovieList from '../MovieList/MovieList'
+import MovieList from '../MovieList/MovieList';
+import MovieDetails from '../MovieDetails/MovieDetails';
+import EditDetails from '../EditDetails/EditDetails';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -9,14 +11,13 @@ class App extends Component {
     return ( 
       <Router>
       <div className="App">
-        <p>App Page</p>
         <Route exact path="/" component={MovieList} />
-        {/* <Route exact path="/details" component={MovieDetails} /> */}
+        <Route exact path="/details" component={MovieDetails} />
+        <Route exact path="/edit" component={EditDetails} />
       </div>
       </Router>
     );
   }
 }
-
 
 export default App;

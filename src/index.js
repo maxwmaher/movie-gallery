@@ -15,6 +15,8 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovies)
+    yield takeEvery('FETCH_MOVIE_TITLE_DETAILS', fetchMovieTitleDetails)
+    yield takeEvery('FETCH_MOVIE_GENRE_DETAILS', fetchMovieGenreDetails)
 }
 
 function* fetchMovies(action) {
@@ -27,6 +29,32 @@ function* fetchMovies(action) {
         })
     } catch (err) {
         console.log('error in MOVIE GET:', err);
+    }
+}
+
+function* fetchMovieTitleDetails(action) {
+    try {
+        let movieTitleDetailResponse = yield axios.get(`/movies/title/${action.payload}`)
+        console.log('the movie title details!', movieTitleDetailResponse.data);
+        yield put({
+            type: 'SET_MOVIE_TITLE_DETAILS',
+            payload: movieTitleDetailResponse.data[0]
+        })
+    } catch (err) {
+        console.log('error in MOVIE TITLE DETAIL GET:', err);
+    }
+}
+
+function* fetchMovieGenreDetails(action) {
+    try {
+        let movieGenreDetailResponse = yield axios.get(`/movies/genres/${action.payload}`)
+        console.log('the movie genre details!', movieGenreDetailResponse.data);
+        yield put({
+            type: 'SET_MOVIE_GENRE_DETAILS',
+            payload: movieGenreDetailResponse.data
+        })
+    } catch (err) {
+        console.log('error in MOVIE GENRE DETAIL GET:', err);
     }
 }
 
@@ -53,11 +81,31 @@ const genres = (state = [], action) => {
     }
 }
 
+const movieTitleDetails = (state = '', action) => {
+    switch (action.type) {
+        case 'SET_MOVIE_TITLE_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+const movieGenreDetails = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_MOVIE_GENRE_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movieTitleDetails,
+        movieGenreDetails
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
@@ -66,6 +114,6 @@ const storeInstance = createStore(
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>,
     document.getElementById('root'));
 registerServiceWorker();
