@@ -17,6 +17,8 @@ class MovieDetails extends Component {
                         )
                     })}
                 </ul>
+                <p><button>Edit</button></p>
+                <p><button>Back to List</button></p>
                 </div>
         )
 

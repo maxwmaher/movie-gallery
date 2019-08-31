@@ -33,7 +33,7 @@ class MovieItems extends Component {
             <Grid item md={4} key={this.props.movies.id} align="center">
                 <Card>
                     {/* <CardActionArea> */}
-                    <CardMedia
+                    <CardMedia onClick={() => this.getMovieDetails(this.props.movies.id)}git 
                         component="img"
                         alt={this.props.movies.title}
                         style={{ width: '35%', marginTop: 10 }}
