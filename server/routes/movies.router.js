@@ -29,6 +29,8 @@ router.get('/title/:id', (req, res) => {
         });
 });
 
+
+//GET MOVIE GENRES
 router.get('/genres/:id', (req, res) => {
     console.log('the req is:', req.params.id);
     const queryText = `SELECT "genres"."name" FROM "genres"
@@ -44,5 +46,21 @@ router.get('/genres/:id', (req, res) => {
             res.sendStatus(500);
         })
 })
+
+//UPDATE MOVIE INFORMATION
+router.put('/', (req, res) => {
+    console.log('the req is', req)
+    let queryText = `UPDATE "movies"
+    SET "title" = $1, "description" = $2
+    WHERE "id" = $3;`;
+    pool
+        .query(queryText, [req.body.title, req.body.description, req.body.id])
+        .then(result => {
+            res.sendStatus(200);
+        })
+        .catch(error => {
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

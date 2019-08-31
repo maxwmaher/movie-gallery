@@ -17,6 +17,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovies)
     yield takeEvery('FETCH_MOVIE_TITLE_DETAILS', fetchMovieTitleDetails)
     yield takeEvery('FETCH_MOVIE_GENRE_DETAILS', fetchMovieGenreDetails)
+    yield takeEvery('UPDATE_MOVIE', updateMovie)
 }
 
 function* fetchMovies(action) {
@@ -55,6 +56,16 @@ function* fetchMovieGenreDetails(action) {
         })
     } catch (err) {
         console.log('error in MOVIE GENRE DETAIL GET:', err);
+    }
+}
+
+function* updateMovie(action) {
+    try {
+        console.log('the PUT ACTION IS!!!', action);
+        
+        yield axios.put(`/movies`, action.payload)
+    } catch (err) {
+        console.log('error in MOVIE UPDATE:', err);
     }
 }
 

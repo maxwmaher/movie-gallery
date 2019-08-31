@@ -5,17 +5,26 @@ class EditDetails extends Component {
 
 state = {
     title: this.props.store.movieTitleDetails.title,
-    description: this.props.store.movieTitleDetails.description
+    description: this.props.store.movieTitleDetails.description,
+    id: this.props.store.movieTitleDetails.id
 }
 
     handleChangeFor = (key) => event => {
-        console.log('this is working okay?');
         this.setState({
                 [key]: event.target.value
         });
     }
 
     handleCancel = () => {
+        this.props.history.push(`/details`);
+    }
+
+    handleSave = () => {
+        console.log('the state objected getting updated:', this.state);
+        this.props.dispatch({
+            type: 'UPDATE_MOVIE',
+            payload: this.state
+        })
         this.props.history.push(`/details`);
     }
 
