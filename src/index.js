@@ -61,9 +61,11 @@ function* fetchMovieGenreDetails(action) {
 
 function* updateMovie(action) {
     try {
-        console.log('the PUT ACTION IS!!!', action);
-        
         yield axios.put(`/movies`, action.payload)
+        yield put ({
+            type: 'SET_MOVIE_TITLE_DETAILS',
+            payload: action.payload
+        })
     } catch (err) {
         console.log('error in MOVIE UPDATE:', err);
     }
