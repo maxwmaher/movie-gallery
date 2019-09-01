@@ -4,12 +4,14 @@ import './App.css';
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import EditDetails from '../EditDetails/EditDetails';
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 class App extends Component {
   // Renders the entire app on the DOM
   render() {
     return ( 
       <Router>
+        <CssBaseline />
       <div className="App">
         <Route exact path="/" component={MovieList} />
         <Route exact path="/details" component={MovieDetails} />
