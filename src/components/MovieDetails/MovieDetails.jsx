@@ -23,66 +23,61 @@ class MovieDetails extends Component {
     render() {
 
         return (
-            <Grid container spacing={1} justify="center">
-                <Grid item md={4} align="center">
-                    <Card>
-                        <CardContent>
+            <div style={{ marginTop: 20, padding: 30 }}>
+                <Grid container spacing={1} justify="center">
+                    <Grid item md={4} align="center">
+                        <Card>
+                            <CardContent>
 
-                            <Grid container direction="row" alignItems="center" padding="300">
-                                {this.props.store.movieGenreDetails.map((genre, i) => {
-                                    return (
-                                        <div className="div-genreList">
-                                        <Grid item>
-                                            <Theaters />
-                                        </Grid>
-                                        <Grid item>
-                                            {genre.name}
-                                        </Grid>
-                                        </div>
-                                            )
-                                })}
+                                <Grid container direction="row" alignItems="center">
+                                    {this.props.store.movieGenreDetails.map((genre, i) => {
+                                        return (
+                                            <div className="div-genreList">
+                                                <Grid item>
+                                                    <Theaters />
+                                                </Grid>
+                                                <Grid item>
+                                                    {genre.name}
+                                                </Grid>
+                                            </div>
+                                        )
+                                    })}
 
+                                </Grid>
+                            </CardContent>
+                            <CardContent>
+                                <Typography>
+                                    <h2>{this.props.store.movieTitleDetails.title}</h2>
+                                </Typography>
+                            </CardContent>
+                            <CardMedia
+                                component="img"
+                                alt={this.props.store.movieTitleDetails.title}
+                                style={{ width: '25%', marginTop: 10 }}
+                                image={this.props.store.movieTitleDetails.poster}
+                                title={this.props.store.movieTitleDetails.title}
+                            />
+                            <CardContent style={{ marginTop: 20 }}>
+                                <Typography>
+                                    {this.props.store.movieTitleDetails.description}
+                                </Typography>
+                            </CardContent>
+                            <Grid container direction="row" alignItems="center">
+                                <Grid item>
+                                    <CardActions>
+                                        <Button onClick={this.handleEdit} size="small" color="primary">Edit</Button>
+                                    </CardActions>
+                                </Grid>
+                                <Grid item>
+                                    <CardActions>
+                                        <Button onClick={this.handleBack} size="small" color="primary">Back to List</Button>
+                                    </CardActions>
+                                </Grid>
                             </Grid>
-                        </CardContent>
-                        <CardContent>
-                            <Typography>
-                                <h3>{this.props.store.movieTitleDetails.title}</h3>
-                            </Typography>
-                        </CardContent>
-                        <CardMedia
-                            component="img"
-                            alt={this.props.store.movieTitleDetails.title}
-                            style={{ width: '25%', marginTop: 10 }}
-                            image={this.props.store.movieTitleDetails.poster}
-                            title={this.props.store.movieTitleDetails.title}
-                        />
-                        <CardContent>
-                            <Typography>
-                                {this.props.store.movieTitleDetails.description}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button>Movie</Button>
-                        </CardActions>
-                    </Card>
+                        </Card>
+                    </Grid>
                 </Grid>
-            </Grid>
-
-
-            // <div>
-            //     <p>Title: {this.props.store.movieTitleDetails.title}</p>
-            //     <p>Description: {this.props.store.movieTitleDetails.description}</p>
-            //     <p>Genres:</p>
-            // <ul>
-            //     {this.props.store.movieGenreDetails.map((genre, i) => {
-            //         return (
-            //             <li key={i}>{genre.name}</li>
-            //         )
-            //     })}
-            // </ul>
-            //     <p><button onClick={this.handleEdit}>Edit</button></p>
-            //     <p><button onClick={this.handleBack}>Back to List</button></p>
-            // </div>
+            </div>
         )
 
     }

@@ -63,7 +63,7 @@ class MovieItems extends Component {
                     {/* </CardActionArea> */}
                     <CardActions>
                         <Button onClick={() => this.getMovieDetails(this.props.movies.id)} size="small" color="primary">
-                            <Movie/>Details
+                            <Movie style={{marginRight: 3}}/>   Details
                                     </Button>
                     </CardActions>
                 </Card>
