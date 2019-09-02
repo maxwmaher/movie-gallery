@@ -12,6 +12,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Movie } from '@material-ui/icons';
 
 class MovieItems extends Component {
 
@@ -30,7 +31,7 @@ class MovieItems extends Component {
 
     render() {
         return (
-            <Grid item md={4} align="center">
+            <Grid item md={3} align="center">
                 <Card>
                     {/* <CardActionArea> */}
                     <CardMedia onClick={() => this.getMovieDetails(this.props.movies.id)} 
@@ -62,7 +63,7 @@ class MovieItems extends Component {
                     {/* </CardActionArea> */}
                     <CardActions>
                         <Button onClick={() => this.getMovieDetails(this.props.movies.id)} size="small" color="primary">
-                            Details
+                            <Movie />Details
                                     </Button>
                     </CardActions>
                 </Card>
