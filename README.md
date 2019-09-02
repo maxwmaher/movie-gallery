@@ -29,14 +29,17 @@ Steps to get the development environment running.
 5. `npm run client`
 
 ## Live Demo
+
+Click the image below to watch a YouTube demo of this application.
+
 [![Movies and Genres Weekend Challenge](README-screenshots/screenshot4.png)](https://www.youtube.com/watch?v=h2433OGJdVI)
 
 
 ## Screenshots
 
 ![screenshot1](README-screenshots/screenshot1.png)
-![screenshot2](README-screenshots/screenshot1.png)
-![screenshot3](README-screenshots/screenshot1.png)
+![screenshot2](README-screenshots/screenshot2.png)
+![screenshot3](README-screenshots/screenshot3.png)
 
 ## Author
 
