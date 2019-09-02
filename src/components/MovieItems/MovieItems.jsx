@@ -34,7 +34,7 @@ class MovieItems extends Component {
             <Grid item md={3} align="center">
                 <Card>
                     {/* <CardActionArea> */}
-                    <CardMedia onClick={() => this.getMovieDetails(this.props.movies.id)} 
+                    <CardMedia onClick={() => this.getMovieDetails(this.props.movies.id)}
                         component="img"
                         alt={this.props.movies.title}
                         style={{ width: '35%', marginTop: 10 }}
@@ -63,8 +63,9 @@ class MovieItems extends Component {
                     {/* </CardActionArea> */}
                     <CardActions>
                         <Button onClick={() => this.getMovieDetails(this.props.movies.id)} size="small" color="primary">
-                            <Movie style={{marginRight: 3}}/>   Details
-                                    </Button>
+                            <Movie style={{ marginRight: 3 }} />
+                            Details
+                         </Button>
                     </CardActions>
                 </Card>
             </Grid>
@@ -72,4 +73,4 @@ class MovieItems extends Component {
     }
 }
 
-export default withRouter(connect() (MovieItems));
+export default withRouter(connect()(MovieItems));

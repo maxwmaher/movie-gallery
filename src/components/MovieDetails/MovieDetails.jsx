@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Grid, Typography } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import { Theaters } from '@material-ui/icons';
+import { Theaters, Edit, List } from '@material-ui/icons';
 
 class MovieDetails extends Component {
 
@@ -54,7 +53,7 @@ class MovieDetails extends Component {
                                 component="img"
                                 alt={this.props.store.movieTitleDetails.title}
                                 style={{ width: '25%', marginTop: 10 }}
-                                image={this.props.store.movieTitleDetails.poster}
+                                src={this.props.store.movieTitleDetails.poster}
                                 title={this.props.store.movieTitleDetails.title}
                             />
                             <CardContent style={{ marginTop: 20 }}>
@@ -65,12 +64,18 @@ class MovieDetails extends Component {
                             <Grid container direction="row" alignItems="center">
                                 <Grid item>
                                     <CardActions>
-                                        <Button onClick={this.handleEdit} size="small" color="primary">Edit</Button>
+                                        <Button onClick={this.handleEdit} size="small" color="primary">
+                                            <Edit style={{ marginRight: 3 }} />
+                                            Edit
+                                        </Button>
                                     </CardActions>
                                 </Grid>
                                 <Grid item>
                                     <CardActions>
-                                        <Button onClick={this.handleBack} size="small" color="primary">Back to List</Button>
+                                        <Button onClick={this.handleBack} size="small" color="primary">
+                                            <List style={{ marginRight: 3 }} />
+                                            Back to List
+                                            </Button>
                                     </CardActions>
                                 </Grid>
                             </Grid>
