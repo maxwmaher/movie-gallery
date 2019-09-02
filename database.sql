@@ -1,3 +1,5 @@
+-- DATABASE NAME: saga_movies_weekend
+
 CREATE TABLE "movies"
 (
   "id" SERIAL PRIMARY KEY,
