@@ -57,7 +57,7 @@ class EditDetails extends Component {
                                         id="standard-multiline-static"
                                         label="description"
                                         multiline
-                                        rows="18"
+                                        rows="12"
                                         defaultValue={this.state.description}
                                         onChange={this.handleChangeFor('description')}
                                         margin="normal"
@@ -67,7 +67,7 @@ class EditDetails extends Component {
                             <Grid container direction="row" alignItems="center">
                                 <Grid item>
                                     <CardActions>
-                                        <Button color="primary" onClick={this.handleSave} size="small">
+                                        <Button onClick={this.handleSave} size="small" style={{ color: "#cd3801" }}>
                                             <Save style={{ marginRight: 3 }} />
                                             Save
                                             </Button>
@@ -75,7 +75,7 @@ class EditDetails extends Component {
                                 </Grid>
                                 <Grid item>
                                     <CardActions>
-                                        <Button color="primary" onClick={this.handleCancel} size="small">
+                                        <Button onClick={this.handleCancel} size="small" style={{ color: "#cd3801" }}>
                                             <Backspace style={{ marginRight: 5 }} />
                                             Cancel
                                             </Button>

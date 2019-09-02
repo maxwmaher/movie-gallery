@@ -64,7 +64,7 @@ class MovieDetails extends Component {
                             <Grid container direction="row" alignItems="center">
                                 <Grid item>
                                     <CardActions>
-                                        <Button onClick={this.handleEdit} size="small" color="primary">
+                                        <Button onClick={this.handleEdit} size="small" style={{color: "#cd3801"}}>
                                             <Edit style={{ marginRight: 3 }} />
                                             Edit
                                         </Button>
@@ -72,7 +72,7 @@ class MovieDetails extends Component {
                                 </Grid>
                                 <Grid item>
                                     <CardActions>
-                                        <Button onClick={this.handleBack} size="small" color="primary">
+                                        <Button onClick={this.handleBack} size="small" style={{ color: "#cd3801" }}>
                                             <List style={{ marginRight: 3 }} />
                                             Back to List
                                             </Button>
