@@ -1,6 +1,8 @@
 # Movies and Genres Application
 
-In this project, I utilized React, Redux, and Redux-Sagas to display information about movies that were listed in a database.  A junction table was created to establish a Many-to-Many relationship between movies and genres.  Users have the ability to view details about a movie, and edit the movie's title and description.  [Try on Heroku](https://cryptic-journey-95926.herokuapp.com/)
+In this project, I utilized React, Redux, and Redux-Sagas to display information about movies that were listed in a database.  A junction table was created to establish a Many-to-Many relationship between movies and genres.  Users have the ability to view details about a movie, and edit the movie's title and description.
+
+[Link to Application](https://cryptic-journey-95926.herokuapp.com/)
 
 ## Technologies Used
 
