@@ -14,18 +14,23 @@ import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
+    //Triggers function to get movies from Axios (movie database)
     yield takeEvery('FETCH_MOVIES', fetchMovies)
+     //Triggers function to get movie details from Axios for the selected movie (movie database)
     yield takeEvery('FETCH_MOVIE_TITLE_DETAILS', fetchMovieTitleDetails)
+    //Triggers function to get the genre details from Axios for the selected movie (genre database)
     yield takeEvery('FETCH_MOVIE_GENRE_DETAILS', fetchMovieGenreDetails)
+    //Triggers function for put request to edit movie details (movie database)
     yield takeEvery('UPDATE_MOVIE', updateMovie)
 }
 
+//GET ALL MOVIES
 function* fetchMovies(action) {
     try {
         let movieResponse = yield axios.get('/movies')
         console.log('saga response!', movieResponse.data);
         yield put({
-            type: 'SET_MOVIES',
+            type: 'SET_MOVIES', //store in movies reducer
             payload: movieResponse.data
         })
     } catch (err) {
@@ -33,12 +38,13 @@ function* fetchMovies(action) {
     }
 }
 
+//GET SELECTED MOVIE'S TITLE/DESCRIPTION DETAILS
 function* fetchMovieTitleDetails(action) {
     try {
         let movieTitleDetailResponse = yield axios.get(`/movies/title/${action.payload}`)
         console.log('the movie title details!', movieTitleDetailResponse.data);
         yield put({
-            type: 'SET_MOVIE_TITLE_DETAILS',
+            type: 'SET_MOVIE_TITLE_DETAILS', //store in movieTitleDetails reducer
             payload: movieTitleDetailResponse.data[0]
         })
     } catch (err) {
@@ -46,12 +52,13 @@ function* fetchMovieTitleDetails(action) {
     }
 }
 
+//GET SELECTED MOVIE'S GENRE DETAILS
 function* fetchMovieGenreDetails(action) {
     try {
         let movieGenreDetailResponse = yield axios.get(`/movies/genres/${action.payload}`)
         console.log('the movie genre details!', movieGenreDetailResponse.data);
         yield put({
-            type: 'SET_MOVIE_GENRE_DETAILS',
+            type: 'SET_MOVIE_GENRE_DETAILS', //store in movieGenreDetails reducer
             payload: movieGenreDetailResponse.data
         })
     } catch (err) {
@@ -59,11 +66,12 @@ function* fetchMovieGenreDetails(action) {
     }
 }
 
+//UPDATE MOVIE TITLE/DESCRIPTION
 function* updateMovie(action) {
     try {
         yield axios.put(`/movies`, action.payload)
         yield put ({
-            type: 'SET_MOVIE_TITLE_DETAILS',
+            type: 'SET_MOVIE_TITLE_DETAILS', //set new details in movieTitleDetails reducer
             payload: action.payload
         })
     } catch (err) {
@@ -84,16 +92,7 @@ const movies = (state = [], action) => {
     }
 }
 
-// Used to store the movie genres
-const genres = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_GENRES':
-            return action.payload;
-        default:
-            return state;
-    }
-}
-
+//Reducer to set the movie title/description details of the selected movie
 const movieTitleDetails = (state = '', action) => {
     switch (action.type) {
         case 'SET_MOVIE_TITLE_DETAILS':
@@ -103,6 +102,7 @@ const movieTitleDetails = (state = '', action) => {
     }
 }
 
+//Reducer to set the genre details of the selected movie
 const movieGenreDetails = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIE_GENRE_DETAILS':
@@ -116,7 +116,6 @@ const movieGenreDetails = (state = [], action) => {
 const storeInstance = createStore(
     combineReducers({
         movies,
-        genres,
         movieTitleDetails,
         movieGenreDetails
     }),

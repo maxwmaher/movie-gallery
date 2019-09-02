@@ -10,11 +10,12 @@ import { Theaters, Edit, List } from '@material-ui/icons';
 
 class MovieDetails extends Component {
 
+    //Handles route change to the Edit screen
     handleEdit = () => {
         this.props.history.push(`/edit`);
     }
 
-
+    //Handle route change to the Home page
     handleBack = () => {
         this.props.history.push(`/`);
     }
@@ -24,11 +25,12 @@ class MovieDetails extends Component {
         return (
             <div style={{ marginTop: 20, padding: 30 }}>
                 <Grid container spacing={1} justify="center">
+                    {/* Width of the grid item is 4 out of 12 */}
                     <Grid item md={4} align="center">
                         <Card>
                             <CardContent>
-
                                 <Grid container direction="row" alignItems="center">
+                                    {/* Loop over genres, display theater icon and genre name */}
                                     {this.props.store.movieGenreDetails.map((genre, i) => {
                                         return (
                                             <div className="div-genreList">
@@ -41,14 +43,15 @@ class MovieDetails extends Component {
                                             </div>
                                         )
                                     })}
-
                                 </Grid>
                             </CardContent>
                             <CardContent>
                                 <Typography>
+                                    {/* Display the movie title */}
                                     <h2>{this.props.store.movieTitleDetails.title}</h2>
                                 </Typography>
                             </CardContent>
+                            {/* Display the movie poster */}
                             <CardMedia
                                 component="img"
                                 alt={this.props.store.movieTitleDetails.title}
@@ -58,12 +61,14 @@ class MovieDetails extends Component {
                             />
                             <CardContent style={{ marginTop: 20 }}>
                                 <Typography>
+                                    {/* Display the movie description */}
                                     {this.props.store.movieTitleDetails.description}
                                 </Typography>
                             </CardContent>
                             <Grid container direction="row" alignItems="center">
                                 <Grid item>
                                     <CardActions>
+                                        {/* Button to edit the content */}
                                         <Button onClick={this.handleEdit} size="small" style={{color: "#cd3801"}}>
                                             <Edit style={{ marginRight: 3 }} />
                                             Edit
@@ -72,6 +77,7 @@ class MovieDetails extends Component {
                                 </Grid>
                                 <Grid item>
                                     <CardActions>
+                                        {/* Button to go back to the home screen */}
                                         <Button onClick={this.handleBack} size="small" style={{ color: "#cd3801" }}>
                                             <List style={{ marginRight: 3 }} />
                                             Back to List

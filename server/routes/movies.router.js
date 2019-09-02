@@ -4,6 +4,7 @@ const router = express.Router();
 
 //GET ALL MOVIES
 router.get('/', (req, res) => {
+    //Grab id, title, poster, and description and sort by title alphabetically
     const queryText = `SELECT "id", "title", "poster", "description" FROM "movies" ORDER BY "title" ASC;`;
     pool.query(queryText)
         .then((result) => {

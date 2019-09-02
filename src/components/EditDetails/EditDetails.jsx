@@ -42,10 +42,12 @@ class EditDetails extends Component {
 
             <div style={{ marginTop: 20, padding: 30 }}>
                 <Grid container spacing={1} justify="center">
+                    {/* Width of the grid item is 4 out of 12 */}
                     <Grid item md={4} align="center">
                         <Card>
                             <CardContent>
                                 <Typography>
+                                    {/* Field to edit the movie title */}
                                     <TextField
                                         id="standard-name"
                                         label="title"
@@ -53,6 +55,7 @@ class EditDetails extends Component {
                                         onChange={this.handleChangeFor('title')}
                                         margin="normal"
                                         style={{ width: 400 }} />
+                                        {/* Field to edit the movie description */}
                                     <TextField
                                         id="standard-multiline-static"
                                         label="description"
@@ -67,6 +70,7 @@ class EditDetails extends Component {
                             <Grid container direction="row" alignItems="center">
                                 <Grid item>
                                     <CardActions>
+                                        {/* Button to save the changes and go back to Details page*/}
                                         <Button onClick={this.handleSave} size="small" style={{ color: "#cd3801" }}>
                                             <Save style={{ marginRight: 3 }} />
                                             Save
@@ -75,6 +79,7 @@ class EditDetails extends Component {
                                 </Grid>
                                 <Grid item>
                                     <CardActions>
+                                        {/* Button to cancel the changes and go back to Details page */}
                                         <Button onClick={this.handleCancel} size="small" style={{ color: "#cd3801" }}>
                                             <Backspace style={{ marginRight: 5 }} />
                                             Cancel

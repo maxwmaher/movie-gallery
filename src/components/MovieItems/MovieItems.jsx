@@ -16,16 +16,19 @@ import { Movie } from '@material-ui/icons';
 
 class MovieItems extends Component {
 
+    //Get info from Movies database
     getMovieDetails = (id) => {
         console.log('the id currently is:', id)
         this.props.dispatch({
             type: 'FETCH_MOVIE_TITLE_DETAILS',
             payload: id
         })
+        //Get info from Genres database
         this.props.dispatch({
             type: 'FETCH_MOVIE_GENRE_DETAILS',
             payload: id
         })
+        //Navigate to the details page for a particular movie
         this.props.history.push(`/details`);
     }
 
@@ -33,7 +36,7 @@ class MovieItems extends Component {
         return (
             <Grid item md={3} align="center">
                 <Card>
-                    {/* <CardActionArea> */}
+                    {/* Display movie poster */}
                     <CardMedia onClick={() => this.getMovieDetails(this.props.movies.id)}
                         component="img"
                         alt={this.props.movies.title}
@@ -43,25 +46,28 @@ class MovieItems extends Component {
                     />
                     <CardContent>
                         <CardActionArea>
+                            {/* Display expansion panel for description */}
                             <ExpansionPanel>
                                 <ExpansionPanelSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1a-content"
                                     id="panel1a-header">
                                     <Typography>
-                                        {this.props.movies.title}
+                                        {/* Display movie title */}
+                                        <b>{this.props.movies.title}</b>
                                     </Typography>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                     <Typography>
+                                        {/* Display movie description */}
                                         {this.props.movies.description}
                                     </Typography>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                         </CardActionArea>
                     </CardContent>
-                    {/* </CardActionArea> */}
                     <CardActions>
+                        {/* Display button to navigate into movie details page */}
                         <Button onClick={() => this.getMovieDetails(this.props.movies.id)} size="small" style={{ color: "#cd3801" }}>
                             <Movie style={{ marginRight: 3 }} />
                             Details
