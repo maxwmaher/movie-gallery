@@ -42,6 +42,9 @@ Click the image below to watch a YouTube demo of this application.
 ![screenshot2](README-screenshots/screenshot2.png)
 ![screenshot3](README-screenshots/screenshot3.png)
 
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
 ## Author
 
 - Max Maher
